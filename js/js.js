@@ -8,6 +8,10 @@ const okBtnEl = document.querySelector("#form-section .btn-primary");
 const abortBtnEl = document.querySelector("#form-section .btn-secondary");
 const ticket = document.getElementById('ticket-section');
 const userNameLabel = document.querySelector('h6.my-user-name');
+const discountLabel = document.getElementById('sconto');
+const carrozzaLabel = document.getElementById('carrozza');
+const codeLabel = document.getElementById('code');
+const priceLabel = document.getElementById('price-label');
 
 const priceByKm = .21;
 
@@ -56,6 +60,8 @@ okBtnEl.addEventListener("click", function() {
         nameTitleEl.classList.remove("text-danger");
     } else if(parseInt(userAgeEl.value) === 0){
         alert("Seleziona una fascia d' età");
+        nameTitleEl.innerHTML = "Inserisci il tuo Nome";
+        nameTitleEl.classList.remove("text-danger");
         kmTitleEl.innerHTML = "Inserisci la tratta";
         kmTitleEl.classList.remove("text-danger");
     } else{
@@ -71,10 +77,13 @@ okBtnEl.addEventListener("click", function() {
 
         if (userAge === 1){
             discount = price * .2;
+            discountLabel.innerHTML = 'Biglietto Ridotto';
         } else if(userAge === 3){
             discount = price * .4;
+            discountLabel.innerHTML = 'Biglietto Ultra-Ridotto';
         } else{
             discount = 0;
+            discountLabel.innerHTML = 'Biglietto Standard';
         }
 
         finalPrice = (Math.round((price - discount) * 100) / 100).toFixed(2);
@@ -87,7 +96,11 @@ okBtnEl.addEventListener("click", function() {
 
         ticket.classList.replace('d-none', 'd-block');
         userNameLabel.innerHTML = userName;
-
+        let randomA = Math.round(Math.random() * 10);
+        carrozzaLabel.innerHTML = randomA;
+        let randomB = Math.round(Math.random() * 100000);
+        codeLabel.innerHTML = randomB;
+        priceLabel.innerHTML = `€${finalPrice}`;
     }
 });
 
