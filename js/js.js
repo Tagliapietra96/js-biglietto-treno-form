@@ -12,7 +12,7 @@ let userName;
 let userKm;
 let userAge;
 let price;
-let discount;
+let discount = 0;
 let finalPrice;
 
 
@@ -24,8 +24,6 @@ abortBtnEl.addEventListener("click", function() {
     nameTitleEl.classList.remove("text-danger");
     kmTitleEl.innerHTML = "Inserisci la tratta";
     kmTitleEl.classList.remove("text-danger");
-    ageTitleEl.innerHTML = "Seleziona la tua età";
-    ageTitleEl.classList.remove("text-danger");
 });
 
 okBtnEl.addEventListener("click", function() {
@@ -48,6 +46,32 @@ okBtnEl.addEventListener("click", function() {
         kmTitleEl.innerHTML = "Non si accettano valori negativi";
         kmTitleEl.classList.remove("text-danger");
         kmTitleEl.classList.add("text-danger");
-    } 
+    } else if(parseInt(userAgeEl.value) === 0){
+        alert("Seleziona una fascia d' età");
+    } else{
+        nameTitleEl.innerHTML = "Inserisci il tuo Nome";
+        nameTitleEl.classList.remove("text-danger");
+        kmTitleEl.innerHTML = "Inserisci la tratta";
+        kmTitleEl.classList.remove("text-danger");
+
+        userName = userNameEl.value;
+        userKm = parseInt(userKmEl.value);
+        userAge = parseInt(userAgeEl.value);
+        price = userKm * priceByKm;
+
+        if (userAge === 1){
+            discount = price * .2;
+        } else if(userAge === 3){
+            discount = price * .4;
+        }
+
+        finalPrice = (Math.round((price - discount) * 100) / 100).toFixed(2);
+        console.log(userName);
+        console.log(userKm);
+        console.log(userAge);
+        console.log(price);
+        console.log(discount);
+        console.log(finalPrice);
+    }
 });
 
