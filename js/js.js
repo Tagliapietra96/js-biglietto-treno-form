@@ -6,6 +6,9 @@ const userAgeEl = document.getElementById('user-age');
 const ageTitleEl = document.querySelector('h6.my-age-title');
 const okBtnEl = document.querySelector("#form-section .btn-primary");
 const abortBtnEl = document.querySelector("#form-section .btn-secondary");
+const ticket = document.getElementById('ticket-section');
+const userNameLabel = document.querySelector('h6.my-user-name');
+
 const priceByKm = .21;
 
 let userName;
@@ -24,6 +27,7 @@ abortBtnEl.addEventListener("click", function() {
     nameTitleEl.classList.remove("text-danger");
     kmTitleEl.innerHTML = "Inserisci la tratta";
     kmTitleEl.classList.remove("text-danger");
+    ticket.classList.replace('d-block', 'd-none')
 });
 
 okBtnEl.addEventListener("click", function() {
@@ -80,6 +84,10 @@ okBtnEl.addEventListener("click", function() {
         console.log(price);
         console.log(discount);
         console.log(finalPrice);
+
+        ticket.classList.replace('d-none', 'd-block');
+        userNameLabel.innerHTML = userName;
+
     }
 });
 
