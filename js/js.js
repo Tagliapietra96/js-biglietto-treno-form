@@ -96,7 +96,7 @@ okBtnEl.addEventListener("click", function() {
 
         ticket.classList.replace('d-none', 'd-block');
         userNameLabel.innerHTML = userName;
-        let randomA = Math.ceil(Math.random() * 10);
+        let randomA = Math.ceil(Math.random() * 20);
         carrozzaLabel.innerHTML = randomA;
         let randomB = Math.round(Math.random() * 100000);
         codeLabel.innerHTML = randomB;
