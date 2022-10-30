@@ -12,7 +12,7 @@ let userName;
 let userKm;
 let userAge;
 let price;
-let discount = 0;
+let discount;
 let finalPrice;
 
 
@@ -41,13 +41,19 @@ okBtnEl.addEventListener("click", function() {
         nameTitleEl.classList.add("text-danger");
     } else if(parseInt(userKmEl.value) === 0 || userKmEl.value === ""){
         alert("Inserisci i chilometri che devi percorrere");
+        nameTitleEl.innerHTML = "Inserisci il tuo Nome";
+        nameTitleEl.classList.remove("text-danger");
     } else if(parseInt(userKmEl.value) < 0){
         alert("Inserisci correttamente i chilometri che devi percorrere");
         kmTitleEl.innerHTML = "Non si accettano valori negativi";
         kmTitleEl.classList.remove("text-danger");
         kmTitleEl.classList.add("text-danger");
+        nameTitleEl.innerHTML = "Inserisci il tuo Nome";
+        nameTitleEl.classList.remove("text-danger");
     } else if(parseInt(userAgeEl.value) === 0){
         alert("Seleziona una fascia d' età");
+        kmTitleEl.innerHTML = "Inserisci la tratta";
+        kmTitleEl.classList.remove("text-danger");
     } else{
         nameTitleEl.innerHTML = "Inserisci il tuo Nome";
         nameTitleEl.classList.remove("text-danger");
@@ -63,6 +69,8 @@ okBtnEl.addEventListener("click", function() {
             discount = price * .2;
         } else if(userAge === 3){
             discount = price * .4;
+        } else{
+            discount = 0;
         }
 
         finalPrice = (Math.round((price - discount) * 100) / 100).toFixed(2);
